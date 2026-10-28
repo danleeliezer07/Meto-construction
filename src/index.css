@@ -1,0 +1,97 @@
+@import "tailwindcss";
+
+@theme {
+  /* ---- Palette METO Construction ---- */
+  --color-cream: #FAFAF8;
+  --color-surface: #F3F4F6;
+  --color-ink: #111827;
+  --color-slate: #6B7280;
+  --color-orange-50: #FFF4EC;
+  --color-orange-100: #FFE4CC;
+  --color-orange: #F97316;
+  --color-orange-600: #EA6A0C;
+  --color-orange-700: #C2570A;
+  --color-line: #E5E7EB;
+  --color-charcoal: #15171C;
+  --color-charcoal-soft: #1F2229;
+
+  --font-display: "Poppins", ui-sans-serif, system-ui, sans-serif;
+  --font-body: "Inter", ui-sans-serif, system-ui, sans-serif;
+
+  --radius-card: 16px;
+
+  --shadow-soft: 0 1px 2px rgba(17, 24, 39, 0.04), 0 8px 24px -8px rgba(17, 24, 39, 0.10);
+  --shadow-lift: 0 12px 32px -12px rgba(17, 24, 39, 0.18);
+}
+
+html {
+  scroll-behavior: smooth;
+  /* Empêche la page de sauter latéralement quand une barre de défilement apparaît */
+  scrollbar-gutter: stable; 
+}
+
+body {
+  background-color: var(--color-cream);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  
+  /* TRÈS IMPORTANT : Bloque le défilement horizontal indésirable (quand un élément dépasse) */
+  overflow-x: hidden; 
+}
+
+/* Fixe la structure racine de React pour qu'elle occupe toujours au moins tout l'écran */
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+::selection {
+  background-color: var(--color-orange);
+  color: white;
+}
+
+.container-meto {
+  width: 100%;
+  max-width: 1240px;
+  margin-inline: auto;
+  padding-inline: 1.5rem;
+}
+
+@media (min-width: 1024px) {
+  .container-meto {
+    padding-inline: 2rem;
+  }
+}
+
+/* Utility for the diagonal roof accent used across the site */
+.roof-accent {
+  position: relative;
+}
+.roof-accent::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 44px;
+  height: 4px;
+  background: var(--color-orange);
+  border-radius: 2px;
+}
